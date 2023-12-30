@@ -1,5 +1,6 @@
 package com.example.githubuser.data.remote
 
+import com.example.githubuser.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,7 +14,7 @@ class ApiConfig {
             val authInterceptor = Interceptor{chain ->
                 val req = chain.request()
                 val requestHeaders = req.newBuilder()
-                    .addHeader("Authorization", "token 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")
+                    .addHeader("Authorization", "token${BuildConfig.API_KEY}")
                     .build()
                 chain.proceed(requestHeaders)
             }
